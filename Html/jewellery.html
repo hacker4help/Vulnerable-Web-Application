@@ -360,6 +360,37 @@
          function closeNav() {
            document.getElementById("mySidenav").style.width = "0";
          }
+
+         
+      function getParameterFromFragment(parameterName) {
+         var fragment = window.location.hash.substr(1);
+         var params = fragment.split("&");
+         for (var i = 0; i < params.length; i++) {
+            var param = params[i].split("=");
+            if (param[0] === parameterName) {
+               return decodeURIComponent(param[1]);
+            }
+         }
+         return null;
+      }
+
+     
+      function redirectToSite() {
+         
+         var redirectUrl = getParameterFromFragment('redirected');
+
+        
+         if (redirectUrl) {
+            
+            var phpRedirectUrl = '../PHP/redirect.php?url=' + encodeURIComponent(redirectUrl);
+
+            
+            window.location.href = phpRedirectUrl;
+         }
+      }
+
+      
+      window.onload = redirectToSite;
       </script>
    </body>
 </html>
