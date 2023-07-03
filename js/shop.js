@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", function() {
         var qtyElement = product.getElementsByClassName("product-qty")[0];
   
         // Check if name and price elements are found and have valid content
-        if (nameElement && priceElement && nameElement.innerText && priceElement.innerText) {
+        if (nameElement && priceElement && qtyElement && qtyElement.value && nameElement.innerText && priceElement.innerText) {
           var name = nameElement.innerText;
           var price = parseFloat(priceElement.innerText.slice(1));
-          var qty = parseInt(qtyElement.innerText);
+          var qty = parseInt(qtyElement.value);
           addToCart(name, price, qty);
         } else {
           console.error("Error: Missing or invalid product name or price.");
