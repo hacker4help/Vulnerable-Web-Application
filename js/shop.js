@@ -49,17 +49,18 @@ function addToCart(name, price, qty) {
     var storedCart = localStorage.getItem("cart");
     var cart = storedCart ? JSON.parse(storedCart) : [];
     for (var i = 0; i < cart.length; i++) {
-    if (cart[i].name === name) {
+      if (cart[i].name === name) {
         // Replace the existing item
         cart[i].price = price; // Update the price of the existing item
         cart[i].qty = qty;
+        localStorage.setItem("cart", JSON.stringify(cart));
         return; // Exit the function after updating the cart
-    }
+      }
     }
     
     // If the item doesn't exist in the cart, add it as a new item
     cart.push({ name: name, price: price, qty: qty });
     localStorage.setItem("cart", JSON.stringify(cart));
-}
+  }
 
-});
+   });
