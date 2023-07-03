@@ -36,6 +36,9 @@ document.addEventListener("DOMContentLoaded", function() {
           var name = nameElement.innerText;
           var price = parseFloat(priceElement.innerText.slice(1));
           var qty = parseInt(qtyElement.value);
+          console.log("Name:", name);
+          console.log("Price:", price);
+          console.log("Quantity:", qty);
           addToCart(name, price, qty);
         } else {
           console.error("Error: Missing or invalid product name or price.");
