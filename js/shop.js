@@ -46,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function addToCart(name, price, qty) {
     // Check if the item already exists in the cart
+    var storedCart = localStorage.getItem("cart");
+    var cart = storedCart ? JSON.parse(storedCart) : [];
     for (var i = 0; i < cart.length; i++) {
     if (cart[i].name === name) {
         // Replace the existing item
