@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var product = this.parentElement;
         var name = product.getElementsByClassName("product-name")[0].innerText;
         var price = parseFloat(product.getElementsByClassName("product-price")[0].innerText.slice(1));
-        var qty = parseInt(product.getElementsByClassName("product-qty")[0].value);
+        var qty = parseInt(product.getElementsByClassName("product-qty")[0].innerText);
         addToCart(name, price, qty);
       });
     }
