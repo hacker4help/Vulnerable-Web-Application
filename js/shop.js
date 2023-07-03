@@ -41,11 +41,23 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
   
-    // Function to add items to the cart
-    function addToCart(name, price) {
-      var storedCart = localStorage.getItem("cart");
-      var cart = storedCart ? JSON.parse(storedCart) : [];
-      cart.push({ name: name, price: price });
-      localStorage.setItem("cart", JSON.stringify(cart));
+
+// // Function to add items to the cart
+
+function addToCart(name, price, qty) {
+    // Check if the item already exists in the cart
+    for (var i = 0; i < cart.length; i++) {
+    if (cart[i].name === name) {
+        // Replace the existing item
+        cart[i].price = price; // Update the price of the existing item
+        cart[i].qty = qty;
+        return; // Exit the function after updating the cart
     }
-  });
+    }
+    
+    // If the item doesn't exist in the cart, add it as a new item
+    cart.push({ name: name, price: price, qty: qty });
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+});

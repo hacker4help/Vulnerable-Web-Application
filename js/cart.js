@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
         var product = this.parentElement;
         var name = product.getElementsByClassName("product-name")[0].innerText;
         var price = parseFloat(product.getElementsByClassName("product-price")[0].innerText.slice(1));
-        addToCart(name, price);
+        var qty = parseInt(product.getElementsByClassName("product-qty")[0].value);
+        addToCart(name, price, qty);
       });
     }
   
@@ -28,14 +29,15 @@ document.addEventListener("DOMContentLoaded", function() {
   
     
     // Function to add items to the cart
-    function addToCart(name, price) {
+    function addToCart(name, price, qty) {
         // Check if the item already exists in the cart
         for (var i = 0; i < cart.length; i++) {
         if (cart[i].name === name) {
             // Replace the existing item
-            total -= cart[i].price; // Deduct the existing item price from the total
+            total -= (cart[i].price * cart[i].qty); // Deduct the existing item price from the total
             cart[i].price = price; // Update the price of the existing item
-            total += price; // Add the new price to the total
+            cart[i].qty = qty;
+            total += price*qty; // Add the new price to the total
             saveCart();
             renderCart();
             return; // Exit the function after updating the cart
@@ -43,13 +45,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         
         // If the item doesn't exist in the cart, add it as a new item
-        cart.push({ name: name, price: price });
-        total += price;
+        cart.push({ name: name, price: price, qty: qty });
+        total += price*qty;
         saveCart();
         renderCart();
     }
 
-    
+
     // Function to save the cart to local storage
     function saveCart() {
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -59,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function calculateTotal() {
       var sum = 0;
       for (var i = 0; i < cart.length; i++) {
-        sum += cart[i].price;
+        sum += cart[i].price*cart[i].qty;
       }
       return sum;
     }
@@ -69,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
       cartItems.innerHTML = "";
       for (var i = 0; i < cart.length; i++) {
         var item = document.createElement("li");
-        item.innerText = cart[i].name + " - $" + cart[i].price;
+        item.innerText = cart[i].name + " - $" + cart[i].price + "  Qty: " + cart[i].qty;
         cartItems.appendChild(item);
       }
       cartTotal.innerText = "Total: $" + total.toFixed(2);
