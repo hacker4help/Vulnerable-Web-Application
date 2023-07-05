@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function buyItems(){
-      var priceElement = product.getElementByClassName("product-price");
+      var priceElement = document.getElementByClassName("buy");
       var total = parseFloat(priceElement.innerText.slice(1));      
       var myForm = document.createElement("form");
             myForm.setAttribute("id", "myForm");
