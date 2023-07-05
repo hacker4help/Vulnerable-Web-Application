@@ -91,5 +91,6 @@ document.addEventListener("DOMContentLoaded", function() {
             myForm.method = "POST";
             myForm.action = "receipt.html";
             myForm.submit();
+            console.log("Success")
     }
   });
