@@ -1,3 +1,65 @@
+
+
+<?php
+    session_start();
+    require_once "pdo.php";
+    $sess=session_id();
+    #$oldname = isset($_POST['name']) ? $_POST['name'] : '';
+    $msg = '';
+    
+
+    if ( isset($_POST['name'])&& isset($_POST['email'])&&isset($_POST['password'])){
+        $sql = "INSERT INTO users (name,email,password) VALUES (:name,:email,:password)";
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(
+            ':name' => $_POST['name'],
+            ':email' => $_POST['email'],
+            ':password' => $_POST['password']
+        ));
+    }
+    elseif (isset($_POST['email'])&&isset($_POST['password'])){ 
+        $sql = "SELECT * FROM users WHERE password=:password AND email = :email";
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(
+            ':email' => $_POST['email'],
+            ':password' => $_POST['password']
+        ));
+
+        if (($stmt->rowCount()==1) ){ 
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if($row['email'] == $_POST['email'] && $row['password'] == $_POST['password']){
+                $_SESSION['user_id'] = $row['user_id'];
+                $_SESSION['name'] = $row['name'];
+                $_SESSION['email'] = $row['email'];
+                //needs reworking
+                $sql = "INSERT INTO `sessions`(`session_id`, `user_id`) VALUES (:sessid,:userid)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(array(
+                    ':sessid' => $sess,
+                    ':userid' => $_SESSION['user_id']
+                ));
+                header('Location: shop.php');
+                exit();
+            }        
+            else { 
+                $msg = 'Incorrect input';
+            }
+
+        }
+        else{
+            $msg = 'Incorrect input';
+        }
+    } 
+    else{
+            $msg = 'Incorrect input';
+    } 
+    
+         
+    
+?> 
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -25,7 +87,7 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#" method = "post">
+		<form action="#" method="post">
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -48,7 +110,7 @@
 			</div>
 			<div class="overlay-panel overlay-right">
 				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start your journey with us</p>
+				<p>Enter your personal details and start journey with us</p>
 				<button class="ghost" id="signUp">Sign Up</button>
 			</div>
 		</div>

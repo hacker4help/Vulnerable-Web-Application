@@ -76,4 +76,20 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       cartTotal.innerText = "Total: $" + total.toFixed(2);
     }
+
+    function buyItems(){
+            var myForm = document.createElement("form");
+            myForm.setAttribute("id", "myForm");
+            document.body.appendChild(myForm);
+
+            var amountInput = document.createElement("input");
+            amountInput.setAttribute("type", "hidden");
+            amountInput.setAttribute("name", "amount");
+            amountInput.setAttribute("value", total);
+            myForm.appendChild(amountInput);
+
+            myForm.method = "POST";
+            myForm.action = "receipt.html";
+            myForm.submit();
+    }
   });
