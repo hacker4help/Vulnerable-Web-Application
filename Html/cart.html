@@ -10,13 +10,13 @@
     <h2>Cart Items</h2>
     <ul id="cart-items"></ul>
     <p id="cart-total"></p>
-    <button onclick="buyItems()">Buy</button>
+    <button class="buy" onclick="buyItems()">Buy</button>
   </div>
 
   <script src="../js/cart.js"></script>
   <script>
     function buyItems(){
-      var priceElement = product.getElementByClassName("product-price");
+      var priceElement = document.getElementByClassName("product-price");
       var total = parseFloat(priceElement.innerText.slice(1));              
       
             var myForm = document.createElement("form");
