@@ -16,9 +16,11 @@
   <script src="../js/cart.js"></script>
   <script>
     function buyItems(){
-      var priceElement = document.getElementsByClassName("buy")[0];
-      console.log(priceElement.innerText.slice(1));
-      var total = parseFloat(priceElement.innerText.slice(1));              
+      var priceElement = document.getElementById("cart-total");
+      console.log("hello")
+      console.log(priceElement.innerText.slice(8));
+      console.log("hello")
+      var total = parseFloat(priceElement.innerText.slice(8));              
     
             var myForm = document.createElement("form");
             myForm.setAttribute("id", "myForm");
@@ -31,7 +33,7 @@
             myForm.appendChild(amountInput);
 
             myForm.method = "POST";
-            myForm.action = "";
+            myForm.action = "receipt.html";
             myForm.submit();
             console.log("Success")
     }
