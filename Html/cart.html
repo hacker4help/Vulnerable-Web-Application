@@ -16,7 +16,7 @@
   <script src="../js/cart.js"></script>
   <script>
     function buyItems(){
-      var priceElement = document.getElementByClassName("product-price");
+      var priceElement = document.getElementsByClassName("product-price")[0];
       var total = parseFloat(priceElement.innerText.slice(1));              
       
             var myForm = document.createElement("form");
