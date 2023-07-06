@@ -1,5 +1,4 @@
 
-
 <?php
     session_start();
     require_once "pdo.php";
@@ -40,7 +39,7 @@
                     ':sessid' => $sess,
                     ':userid' => $_SESSION['user_id']
                 ));
-                header('Location: shop.php');
+                header('Location: index.html');
                 exit();
             }        
             else { 
@@ -95,7 +94,7 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your account</span>
-			<input type="email" name="email" />
+			<input type="text" name="email" />
 			<input type="password" name="password" />
 			<a href="#">Forgot your password?</a>
 			<button type = "submit">Sign In</button>
@@ -122,3 +121,41 @@
 
 </body>
 </html>
+=======
+<?php
+
+// Establish a connection to the database
+$servername = "127.0.0.1";
+$username = "admin";
+$password = "passkey";
+$dbname = "h4hproject1";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if(isset($_POST['email'])&&isset($_POST['password'])){
+$user = $_POST['email'];
+$pass = $_POST['password'];
+
+
+$sql = "SELECT * FROM users WHERE email='$user' AND password='$pass'";
+
+
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+    echo "VulnWeb{5qL_1j3ct10n_15_FUN}";
+} else {
+    echo "Invalid username or password";
+}
+
+
+$conn->close();
+}
+?>
+
