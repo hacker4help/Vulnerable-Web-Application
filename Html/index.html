@@ -90,17 +90,27 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                      </div>
                   </div>
+                 
                   <div class="main">
                      <!-- Another variation with a button -->
+                     <form method="get" action="get.php">
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search this blog">
+                        
+                        <input type="text" name="name"  class="form-control" placeholder="Search this blog" >
+                        
                         <div class="input-group-append">
-                           <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                           <button class="btn btn-secondary" type="submit" value="submit" style="background-color: #f26522; border-color:#f26522 ">
                            <i class="fa fa-search"></i>
                            </button>
+
                         </div>
+                       </form>
+                       
+                        
                      </div>
+                    
                   </div>
+                 
                   <div class="header_box">
                      <div class="lang_box ">
                         <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
@@ -596,13 +606,16 @@
       </div>
       <!-- jewellery  section end -->
       <!-- footer section start -->
+      <form action="subscribe.php" method="get">
       <div class="footer_section layout_padding">
          <div class="container">
             <div class="footer_logo"><a href="index.html"></a></div>
+            
             <div class="input_bt">
-               <input type="text" class="mail_bt" placeholder="Your Email" name="Your Email">
-               <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribe</a></span>
+               <input type="text" class="mail_bt" name ="name-2" placeholder="Your Email" name="Your Email">
+               <button class="subscribe_bt" type="submit" value="submit" id="basic-addon2">Subscribe</button>
             </div>
+            
             <div class="footer_menu">
                <ul>
                   <li><a href="#">Best Sellers</a></li>
@@ -614,6 +627,7 @@
             </div>
          </div>
       </div>
+     </form>
       <!-- footer section end -->
       <!-- copyright section start -->
       <div class="copyright_section">
