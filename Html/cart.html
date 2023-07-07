@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Shopping Cart</h1>
+  <div id="cart">
+    <h2>Cart Items</h2>
+    <ul id="cart-items"></ul>
+    <p id="cart-total"></p>
+    <button class="buy" onclick="buyItems()">Buy</button>
+  </div>
+
+  <script src="../js/cart.js"></script>
+  <script>
+    function buyItems(){
+      var priceElement = document.getElementById("cart-total");
+      console.log("hello")
+      console.log(priceElement.innerText.slice(8));
+      console.log("hello")
+      var total = parseFloat(priceElement.innerText.slice(8));              
+    
+            var myForm = document.createElement("form");
+            myForm.setAttribute("id", "myForm");
+            document.body.appendChild(myForm);
+
+            var amountInput = document.createElement("input");
+            amountInput.setAttribute("type", "hidden");
+            amountInput.setAttribute("name", "amount");
+            amountInput.setAttribute("value", total);
+            myForm.appendChild(amountInput);
+
+            myForm.method = "POST";
+            myForm.action = "receipt.html";
+            myForm.submit();
+            console.log("Success")
+    }
+  </script>
+</body>
+</html>

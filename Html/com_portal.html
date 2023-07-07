@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+</head>
+<body>
+    <h3>Customer Serive Portal</h3>
+    <img src="../uploads/pic.png" alt="Image Description">
+    <form action="../file_upload.php" method = "POST" enctype = "multipart/form-data">
+    <label>Upload Files</label>
+    <p><input type="text" name="Name" id="name" placeholder="Enter your Full name"></p><input type="text" name="age" id="age" placeholder="Enter your age">
+    <p><input type="text" name="phone" id="phone" placeholder="Enter your Phone No."> </p> 
+    <p><input type="text" name="email" id="email" placeholder="Enter your Email"></p> 
+    <p><input type="text" name="order number" id="orderno" placeholder="Enter your Order number"></p> 
+    <p><textarea name="desc" id="desc" cols="30" rows="10" placeholder="Enter any other info here"></textarea></p>
+    <p ><input type="file" name="file"/></p>
+    <p><input type="submit" name ="upload" value="Submit"></p>
+
+</form>
+
+</body>
+</html>
