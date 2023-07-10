@@ -366,6 +366,36 @@
          function closeNav() {
            document.getElementById("mySidenav").style.width = "0";
          }
+
+         function getParameterFromUrl(url, parameterName) {
+         var params = new URL(url).hash.substring(1);
+         var paramList = params.split('&');
+         for (var i = 0; i < paramList.length; i++) {
+            var param = paramList[i].split('=');
+            if (param[0] === parameterName) {
+               return decodeURIComponent(param[1]);
+            }
+         }
+         return null;
+      }
+
+      function redirectToSite() {
+         var redirectUrl = getParameterFromUrl(window.location.href, 'path');
+
+         if (redirectUrl) {
+            if (redirectUrl.startsWith('http://') || redirectUrl.startsWith('https://')) {
+               window.location.href = redirectUrl;
+            } else {
+               var currentUrl = window.location.href;
+               var baseUrl = currentUrl.substring(0, currentUrl.lastIndexOf('#'));
+               var internalRedirectUrl = baseUrl + '#' + redirectUrl;
+
+               window.location.href = internalRedirectUrl;
+            }
+         }
+      }
+
+      window.onload = redirectToSite;
       </script>
    </body>
 </html>
