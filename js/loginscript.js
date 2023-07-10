@@ -27,6 +27,6 @@ loginButton.addEventListener('click', (event) => {
         document.getElementById('email').value = '';
         document.getElementById('pwd').value = '';
 
-        window.location.href = "dashboard.html";
+        window.location.href = "../Html/dashboard.html";
     }
 });
