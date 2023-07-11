@@ -51,13 +51,17 @@
                 <div class="overlay-panel overlay-right">
                     <h1>Hi, Friend!</h1>
                     <p>Delete your account!</p>
-                    <button class="ghost" id="signUp">Delete</button>
+                    <button onclick="showAlert()" class="ghost" id="signUp">Delete</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="../Server/server.js"></script>
+    <script>
+        function showAlert() {
+            alert("Account Deleted Successfully");
+        }
+    </script>
 </body>
 
 </html>
